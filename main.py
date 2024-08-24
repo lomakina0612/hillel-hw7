@@ -1,6 +1,7 @@
 import json
 import requests
 
+rates =[]
 for year in range(2021, 2022):
    for month in range(1,13):
       r = requests.get(f'https://api.privatbank.ua/p24api/exchange_rates?json&date=01.{month:02}.{year}')
@@ -11,4 +12,5 @@ for year in range(2021, 2022):
 
          # print(rate_eur) 
       print(f'01.{month:02}.{year} 1 EUR = {rate_eur[0]['saleRate']:.2f} UAH') 
-   
+      rates.append((f'01.{month:02}.{year}',rate_eur[0]['saleRate']))
+   print(rates)
